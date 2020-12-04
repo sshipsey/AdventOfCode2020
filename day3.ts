@@ -1,15 +1,15 @@
 const day3p1 = (input: string, slope: Slope) => {
   const map = input.split('\n');
   return calcTrees(map, ...slope);
-}
+};
 
 const day3p2 = (input: string, slopes: Slope[]) => {
   const map = input.split('\n');
-  return slopes
-    .reduce((product, slope) => 
-      product * calcTrees(map, ...slope), 1)
-}
-
+  return slopes.reduce(
+    (product, slope) => product * calcTrees(map, ...slope),
+    1
+  );
+};
 
 const calcTrees = (map: string[], dx: number, dy: number) => {
   let x = 0;
@@ -18,11 +18,10 @@ const calcTrees = (map: string[], dx: number, dy: number) => {
   while (y < map.length - 1) {
     x += dx;
     y += dy;
-    trees += map[y][x % map[0].length] === "#" ? 1 : 0;
+    trees += map[y][x % map[0].length] === '#' ? 1 : 0;
   }
   return trees;
-}
-
+};
 
 const inp = `....#...............#.#..###.##
 .#..#....###..............##...
@@ -350,8 +349,14 @@ const inp = `....#...............#.#..###.##
 
 type Slope = [number, number];
 
-const p1slope: Slope = [1, 3]
+const p1slope: Slope = [1, 3];
 console.log(day3p1(inp, p1slope));
 
-const p2slopes: Slope[] = [[1, 1],[3, 1],[5, 1],[7, 1],[1, 2]];
+const p2slopes: Slope[] = [
+  [1, 1],
+  [3, 1],
+  [5, 1],
+  [7, 1],
+  [1, 2],
+];
 console.log(day3p2(inp, p2slopes));

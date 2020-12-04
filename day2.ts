@@ -9,14 +9,16 @@ const isValid = (password: string) => {
 
   // const counts = pw.split('').reduce((count, c) => {if (c === char) { count++; } return count; }, 0);
 
-
   // return counts <= max && counts >= min;
 
-  return (pw[min - 1] === char && pw[max - 1] !== char) || (pw[min - 1] !== char && pw[max - 1] === char)
-}
+  return (
+    (pw[min - 1] === char && pw[max - 1] !== char) ||
+    (pw[min - 1] !== char && pw[max - 1] === char)
+  );
+};
 
 const day2 = (input: string) => {
-  const inp = input.split("\n")
+  const inp = input.split('\n');
   let count = 0;
   for (let i = 0; i < inp.length; i++) {
     if (isValid(inp[i])) {
@@ -25,7 +27,7 @@ const day2 = (input: string) => {
   }
 
   return count;
-}
+};
 
 const input2 = `4-8 n: dnjjrtclnzdnghnbnn
 5-6 r: rrrrcqr

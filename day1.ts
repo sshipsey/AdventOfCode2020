@@ -1,6 +1,6 @@
 // naive
 const day1 = (input: string) => {
-  const inp = input.split("\n").map(Number);
+  const inp = input.split('\n').map(Number);
   for (let i = 0; i < inp.length; i++) {
     for (let j = 0; j < inp.length; j++) {
       for (let k = 0; k < inp.length; k++) {
@@ -12,23 +12,23 @@ const day1 = (input: string) => {
       }
     }
   }
-}
+};
 
 // efficient
 const day1Efficient = (input: string) => {
-  const inpArr = input.split("\n").map(Number);
+  const inpArr = input.split('\n').map(Number);
   const inpSet = new Set<number>();
 
   for (let i = 0; i < inpArr.length; ++i) {
     for (let j = 0; j < inpArr.length; ++j) {
-      const key = 2020 - inpArr[i] - inpArr[j]
+      const key = 2020 - inpArr[i] - inpArr[j];
       if (i !== 0 && i !== j && inpSet.has(key)) {
         return inpArr[i] * inpArr[j] * key;
       }
     }
     inpSet.add(inpArr[i]);
   }
-}
+};
 
 const input = `1228
 1584
@@ -234,6 +234,5 @@ const input = `1228
 
 console.log(day1(input));
 console.log(day1Efficient(input));
-
 
 // comparator a - b is ascending
