@@ -13,19 +13,19 @@ const hgt = (v: string) => {
     },
   };
 
-  const rgx = RegExp(/(\d+)(cm|in)/g).exec(v)!;
+  const rgx = RegExp(/^(\d+)(cm|in)$/g).exec(v)!;
   if (!rgx) return false;
   const [_, height, unit] = rgx;
   return +height <= heightParams[unit].max && +height >= heightParams[unit].min;
 };
-const hcl = (v: string) => /^#[0-9A-Fa-f]{6}/.test(v);
+const hcl = (v: string) => /^#[0-9a-f]{6}$/.test(v);
 const ecl = (v: string) =>
   ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].some((c) => c === v);
-const pid = (v: string) => /\d{9}/.test(v);
+const pid = (v: string) => /^\d{9}$/.test(v);
 
 const getKeyValue = (passport: string, key: string) => {
   const value = RegExp(`${key}:(\\S+)`, 'g').exec(passport);
-  return value === null ? null : value[0].slice(key.length + 1);
+  return value === null ? null : value[1];
 };
 
 const day4 = (input: string) => {
