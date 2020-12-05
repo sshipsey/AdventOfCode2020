@@ -1,9 +1,7 @@
-const p1 = (ids: number[]) => {
-  return Math.max(...ids);
-};
+const part1 = (ids: number[]) => Math.max(...ids);
 
 // slow
-const p2 = (ids: number[]) => {
+const part2 = (ids: number[]) => {
   const sortedIds = ids.sort((a, b) => a - b);
 
   for (let i = 0; i < sortedIds.length - 1; i++) {
@@ -950,7 +948,7 @@ FBBBBBFRRL`;
 const day5 = (input: string) => {
   const tickets = input.split('\n');
   const ids = tickets.map((ticket) => ticketToId(ticket));
-  return [p1(ids), p2(ids)];
+  return [part1(ids), part2(ids)];
 };
 
 console.log(day5(day5inp));
