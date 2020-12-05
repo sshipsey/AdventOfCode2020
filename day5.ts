@@ -1,29 +1,21 @@
-const day5 = (input: string) => {
-  const tickets = input.split('\n');
-  let maxTicket = -Infinity;
-  for (let ticket of tickets) {
-    const ticketRowCol = reduceRange(ticket, 0, 0, 127, 0, 7);
-    const ticketId = ticketRowCol[0] * 8 + ticketRowCol[1];
-    maxTicket = Math.max(maxTicket, ticketId);
-  }
-  return maxTicket;
+const p1 = (ids: number[]) => {
+  return Math.max(...ids);
 };
 
 // slow
-const day5p2 = (input: string) => {
-  const tickets = input.split('\n');
-  const ids = tickets
-    .map((ticket) => {
-      const ticketRowCol = reduceRange(ticket, 0, 0, 127, 0, 7);
-      return ticketRowCol[0] * 8 + ticketRowCol[1];
-    })
-    .sort((a, b) => a - b);
+const p2 = (ids: number[]) => {
+  const sortedIds = ids.sort((a, b) => a - b);
 
-  for (let i = 0; i < ids.length - 1; i++) {
-    if (ids[i + 1] - ids[i] > 1) {
-      return ids[i] + 1;
+  for (let i = 0; i < sortedIds.length - 1; i++) {
+    if (sortedIds[i + 1] - sortedIds[i] > 1) {
+      return sortedIds[i] + 1;
     }
   }
+};
+
+const ticketToId = (ticket: string) => {
+  const [row, col] = reduceRange(ticket, 0, 0, 127, 0, 7);
+  return row * 8 + col;
 };
 
 const reduceRange = (
@@ -955,6 +947,10 @@ FBFFFBFLRL
 FBBFBFFLRR
 FBBBBBFRRL`;
 
-console.log(day5(day5inp));
+const day5 = (input: string) => {
+  const tickets = input.split('\n');
+  const ids = tickets.map((ticket) => ticketToId(ticket));
+  return [p1(ids), p2(ids)];
+};
 
-console.log(day5p2(day5inp));
+console.log(day5(day5inp));
