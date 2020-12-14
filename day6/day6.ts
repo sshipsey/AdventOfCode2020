@@ -1,4 +1,4 @@
-import { countByString, flat, stripCr, sum } from './util';
+import { countByString, flat, stripCr, sum } from '../util';
 
 const day6p1 = (groups: string[]) =>
   groups
