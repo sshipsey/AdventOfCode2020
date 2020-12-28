@@ -1,5 +1,5 @@
 // naive
-const day1 = (input: string) => {
+const part1 = (input: string) => {
   const inp = input.split('\n').map(Number);
   for (let i = 0; i < inp.length; i++) {
     for (let j = 0; j < inp.length; j++) {
@@ -232,7 +232,8 @@ const input = `1228
 1876
 `;
 
-console.log(day1(input));
-console.log(day1Efficient(input));
-
 // comparator a - b is ascending
+(() => {
+  console.log(part1(input));
+  console.log(day1Efficient(input));
+})();

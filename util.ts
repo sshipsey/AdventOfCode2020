@@ -9,3 +9,9 @@ export const countByString = (str: string) =>
   }, {});
 
 export const flat = (arr: any[]) => [].concat(...arr);
+
+export const sleep = (ms: number) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+};
